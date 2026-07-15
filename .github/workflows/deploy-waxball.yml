@@ -21,6 +21,7 @@ concurrency:
 env:
   SOURCE_REPOSITORY: akra-devs/akra-waxball-flutter
   SOURCE_WORKFLOW: deploy-pages.yml
+  MINIMUM_SOURCE_SHA: f00933b3881021132e7288e0947e88948de0420e
   TRANSFER_ARTIFACT: waxball-site-${{ github.run_id }}-${{ github.run_attempt }}
 
 jobs:
@@ -81,6 +82,15 @@ jobs:
 
           if [[ -z "$run_id" || -z "$source_sha" || -z "$run_attempt" ]]; then
             echo '::error title=No deployable build::No successful main-branch Waxball artifact build was found.'
+            exit 1
+          fi
+
+          comparison="$(GH_TOKEN="$SOURCE_TOKEN" gh api \
+            -H 'Accept: application/vnd.github+json' \
+            "/repos/${SOURCE_REPOSITORY}/compare/${MINIMUM_SOURCE_SHA}...${source_sha}" \
+            --jq '.status')"
+          if [[ "$comparison" != 'ahead' && "$comparison" != 'identical' ]]; then
+            echo '::error title=Build predates artifact handoff::Waiting for the first successful source-only artifact build.'
             exit 1
           fi
 
