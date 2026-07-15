@@ -1,0 +1,223 @@
+name: Deploy latest Waxball artifact
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+    inputs:
+      force:
+        description: Redeploy even when the source commit is unchanged
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: read
+
+concurrency:
+  group: waxball-pages-sync
+  cancel-in-progress: false
+
+env:
+  SOURCE_REPOSITORY: akra-devs/akra-waxball-flutter
+  SOURCE_WORKFLOW: deploy-pages.yml
+  TRANSFER_ARTIFACT: waxball-site-${{ github.run_id }}-${{ github.run_attempt }}
+
+jobs:
+  fetch-private-build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    outputs:
+      deploy: ${{ steps.resolve.outputs.deploy }}
+      source_sha: ${{ steps.resolve.outputs.source_sha }}
+      source_run_id: ${{ steps.resolve.outputs.source_run_id }}
+    steps:
+      - name: Resolve latest successful private build
+        id: resolve
+        shell: bash
+        env:
+          SOURCE_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
+          TARGET_TOKEN: ${{ github.token }}
+          FORCE_DEPLOY: ${{ inputs.force }}
+        run: |
+          set -euo pipefail
+          set +x
+
+          if [[ -z "${SOURCE_TOKEN:-}" ]]; then
+            echo '::error title=Missing PERSONAL_TOKEN::The public deployment repository cannot read the organization artifact token.'
+            exit 1
+          fi
+
+          if ! source_is_private="$(GH_TOKEN="$SOURCE_TOKEN" gh api \
+            -H 'Accept: application/vnd.github+json' \
+            "/repos/${SOURCE_REPOSITORY}" --jq '.private')"; then
+            echo '::error title=Private source unavailable::PERSONAL_TOKEN cannot read the private Waxball source repository.'
+            exit 1
+          fi
+
+          if [[ "$source_is_private" != 'true' ]]; then
+            echo '::error title=Source privacy changed::Expected the Waxball source repository to remain private.'
+            exit 1
+          fi
+
+          runs_json="$(GH_TOKEN="$SOURCE_TOKEN" gh api \
+            -H 'Accept: application/vnd.github+json' \
+            "/repos/${SOURCE_REPOSITORY}/actions/workflows/${SOURCE_WORKFLOW}/runs?branch=main&status=success&per_page=20")"
+
+          run_id="$(jq -r '
+            [.workflow_runs[]
+              | select(
+                  (.event == "push" or .event == "workflow_dispatch")
+                  and .head_branch == "main"
+                )
+            ][0].id // empty
+          ' <<<"$runs_json")"
+          source_sha="$(jq -r --argjson run_id "${run_id:-0}" '
+            [.workflow_runs[] | select(.id == $run_id)][0].head_sha // empty
+          ' <<<"$runs_json")"
+          run_attempt="$(jq -r --argjson run_id "${run_id:-0}" '
+            [.workflow_runs[] | select(.id == $run_id)][0].run_attempt // empty
+          ' <<<"$runs_json")"
+
+          if [[ -z "$run_id" || -z "$source_sha" || -z "$run_attempt" ]]; then
+            echo '::error title=No deployable build::No successful main-branch Waxball artifact build was found.'
+            exit 1
+          fi
+
+          expected_artifact="waxball-web-${run_id}-${run_attempt}"
+          artifacts_json="$(GH_TOKEN="$SOURCE_TOKEN" gh api \
+            -H 'Accept: application/vnd.github+json' \
+            "/repos/${SOURCE_REPOSITORY}/actions/runs/${run_id}/artifacts")"
+          artifact_id="$(jq -r --arg expected "$expected_artifact" '
+            [.artifacts[] | select(.name == $expected and .expired == false)][0].id // empty
+          ' <<<"$artifacts_json")"
+
+          if [[ -z "$artifact_id" ]]; then
+            echo "::error title=Build artifact missing::${expected_artifact} is missing or expired."
+            exit 1
+          fi
+
+          current_sha=''
+          if current_b64="$(GH_TOKEN="$TARGET_TOKEN" gh api \
+            -H 'Accept: application/vnd.github+json' \
+            "/repos/${GITHUB_REPOSITORY}/contents/.source-sha?ref=gh-pages" \
+            --jq '.content' 2>/dev/null)"; then
+            current_sha="$(printf '%s' "$current_b64" | base64 --decode | tr -d '\r\n')"
+          fi
+
+          if [[ "$source_sha" == "$current_sha" && "${FORCE_DEPLOY:-false}" != 'true' ]]; then
+            echo "Waxball ${source_sha} is already deployed."
+            {
+              echo 'deploy=false'
+              echo "source_sha=${source_sha}"
+              echo "source_run_id=${run_id}"
+            } >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          {
+            echo 'deploy=true'
+            echo "artifact_id=${artifact_id}"
+            echo "source_sha=${source_sha}"
+            echo "source_run_id=${run_id}"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Download and verify private web artifact
+        if: steps.resolve.outputs.deploy == 'true'
+        shell: bash
+        env:
+          SOURCE_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
+          ARTIFACT_ID: ${{ steps.resolve.outputs.artifact_id }}
+          SOURCE_SHA: ${{ steps.resolve.outputs.source_sha }}
+        run: |
+          set -euo pipefail
+          set +x
+          umask 077
+
+          GH_TOKEN="$SOURCE_TOKEN" gh api \
+            -H 'Accept: application/vnd.github+json' \
+            "/repos/${SOURCE_REPOSITORY}/actions/artifacts/${ARTIFACT_ID}/zip" \
+            > site.zip
+          mkdir site
+          unzip -q site.zip -d site
+          rm -f site.zip
+
+          test -s site/index.html
+          test -s site/main.dart.wasm
+          test -f site/.nojekyll
+          test "$(cat site/CNAME)" = 'waxball.akra.kr'
+          grep -Fq '<base href="/">' site/index.html
+
+          if find site -type l -print -quit | grep -q .; then
+            echo '::error title=Unsafe artifact::Symbolic links are not allowed in the Pages bundle.'
+            exit 1
+          fi
+
+          printf '%s\n' "$SOURCE_SHA" > site/.source-sha
+
+      - name: Upload verified public bundle
+        if: steps.resolve.outputs.deploy == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.TRANSFER_ARTIFACT }}
+          path: site
+          if-no-files-found: error
+          include-hidden-files: true
+          retention-days: 1
+          compression-level: 0
+
+  publish-gh-pages:
+    if: needs.fetch-private-build.outputs.deploy == 'true'
+    needs: fetch-private-build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    environment:
+      name: waxball-production
+      url: https://waxball.akra.kr/
+    steps:
+      - name: Download verified public bundle
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ env.TRANSFER_ARTIFACT }}
+          path: site
+
+      - name: Publish gh-pages branch
+        shell: bash
+        env:
+          TARGET_TOKEN: ${{ github.token }}
+          SOURCE_SHA: ${{ needs.fetch-private-build.outputs.source_sha }}
+        run: |
+          set -euo pipefail
+          set +x
+          test -s site/index.html
+          test -s site/main.dart.wasm
+          test -f site/.nojekyll
+          test "$(cat site/CNAME)" = 'waxball.akra.kr'
+          test "$(cat site/.source-sha)" = "$SOURCE_SHA"
+          grep -Fq '<base href="/">' site/index.html
+
+          git init --initial-branch=gh-pages publish
+          rsync -a --exclude='.git/' site/ publish/
+          git -C publish config user.name 'github-actions[bot]'
+          git -C publish config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git -C publish add --all
+          git -C publish commit -m "Deploy Waxball from $SOURCE_SHA"
+          git -C publish remote add origin "https://github.com/${GITHUB_REPOSITORY}.git"
+
+          umask 077
+          askpass="$(mktemp)"
+          trap 'rm -f "$askpass"' EXIT
+          cat > "$askpass" <<'ASKPASS'
+          #!/usr/bin/env bash
+          case "$1" in
+            *Username*) printf '%s\n' 'x-access-token' ;;
+            *Password*) printf '%s\n' "${TARGET_TOKEN:?}" ;;
+            *) exit 1 ;;
+          esac
+          ASKPASS
+          chmod 700 "$askpass"
+
+          GIT_ASKPASS="$askpass" GIT_TERMINAL_PROMPT=0 \
+            git -C publish -c credential.helper= push --force origin HEAD:gh-pages
