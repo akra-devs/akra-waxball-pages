@@ -1,0 +1,71 @@
+{
+  "status": "pass",
+  "asset": "assets/models/waxball/hero.glb",
+  "runtimeWebModel": "assets/models/waxball/hero_runtime.gltf",
+  "runtimeWebModelMetrics": {
+    "bytes": 4299240,
+    "nodes": 41,
+    "images": 6,
+    "buffers": 1
+  },
+  "environmentWeb": "assets/environments/studio_softbox_1k.png",
+  "environmentWebMetrics": {
+    "size": [
+      1024,
+      512
+    ],
+    "bytes": 53050
+  },
+  "preview": "assets/renders/hero_stage0_blender.png",
+  "stage0Transparent": "assets/renders/hero_stage0_transparent.png",
+  "stage0TransparentMetrics": {
+    "size": [
+      1200,
+      1200
+    ],
+    "alphaBounds": [
+      157,
+      111,
+      1042,
+      1122
+    ],
+    "fill": [
+      0.7383,
+      0.8433
+    ],
+    "minimumMargin": 77
+  },
+  "cutaway": "assets/renders/hero_cutaway_blender.png",
+  "cutawayTransparent": "assets/renders/hero_cutaway_transparent.png",
+  "cutawayTransparentMetrics": {
+    "size": [
+      1200,
+      1200
+    ],
+    "alphaBounds": [
+      157,
+      111,
+      1042,
+      1122
+    ],
+    "fill": [
+      0.7383,
+      0.8433
+    ],
+    "minimumMargin": 77
+  },
+  "manifest": "assets/models/waxball/hero_manifest.json",
+  "shards": 28,
+  "morphs": [
+    "PRESS",
+    "BULGE_L",
+    "BULGE_R",
+    "RELEASE",
+    "WOBBLE_X",
+    "WOBBLE_Z",
+    "BREATHE",
+    "FAIL_TREMBLE"
+  ],
+  "coreVertices": 4879,
+  "glbBytes": 5422824
+}

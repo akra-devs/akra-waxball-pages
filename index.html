@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
+
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
+
+    For more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+
+    This is a placeholder for base href that will be replaced by the value of
+    the `--base-href` argument provided to `flutter build`.
+  -->
+  <base href="/">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="WAXBALL - a tactile opal waxball breaking experience.">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="WAXBALL">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
+
+  <meta name="theme-color" content="#263968">
+  <title>WAXBALL</title>
+  <link rel="manifest" href="manifest.json">
+  <style>
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      background: #263968;
+    }
+
+    #waxball-platform-splash {
+      position: fixed;
+      inset: 0;
+      z-index: 2147483647;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 50% 43%, rgba(159, 203, 255, .18), transparent 31%),
+        linear-gradient(160deg, #263968 0%, #342f68 100%);
+      transition: opacity 240ms ease-out, visibility 240ms ease-out;
+    }
+
+    #waxball-platform-splash img {
+      width: min(52vw, 224px);
+      height: auto;
+      filter: drop-shadow(0 20px 36px rgba(7, 15, 45, .32));
+      animation: waxball-splash-arrive 700ms cubic-bezier(.2, .75, .25, 1) both;
+    }
+
+    #waxball-platform-splash.is-hidden {
+      visibility: hidden;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    @keyframes waxball-splash-arrive {
+      from {
+        opacity: 0;
+        transform: translateY(12px) scale(.94);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      #waxball-platform-splash,
+      #waxball-platform-splash img {
+        animation: none;
+        transition: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="waxball-platform-splash" aria-hidden="true">
+    <img
+      alt=""
+      decoding="async"
+      fetchpriority="high"
+      src="assets/assets/images/waxball-app-intro-mascot-opal-v1.png">
+  </div>
+  <!--
+    You can customize the "flutter_bootstrap.js" script.
+    This is useful to provide a custom configuration to the Flutter loader
+    or to give the user feedback during the initialization process.
+
+    For more details:
+    * https://docs.flutter.dev/platform-integration/web/initialization
+  -->
+  <!-- Vendored WebGL2 interop used by the realtime three_js renderer. -->
+  <script src="gles_bindings.js"></script>
+  <script>
+    window.addEventListener('flutter-first-frame', () => {
+      const splash = document.getElementById('waxball-platform-splash');
+      if (!splash) return;
+      splash.classList.add('is-hidden');
+      window.setTimeout(() => splash.remove(), 260);
+    }, { once: true });
+  </script>
+  <script src="flutter_bootstrap.js" async></script>
+</body>
+</html>
