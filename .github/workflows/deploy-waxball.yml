@@ -1,10 +1,21 @@
 name: Deploy latest Waxball artifact
 
 on:
-  schedule:
-    - cron: "2-59/5 * * * *"
   workflow_dispatch:
     inputs:
+      source_run_id:
+        description: Private build workflow run ID
+        required: true
+        type: string
+      source_run_attempt:
+        description: Private build workflow run attempt
+        required: true
+        default: "1"
+        type: string
+      source_sha:
+        description: Exact private main commit SHA to deploy
+        required: true
+        type: string
       force:
         description: Redeploy even when the source commit is unchanged
         required: false
@@ -16,7 +27,7 @@ permissions:
 
 concurrency:
   group: waxball-pages-sync
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 env:
   SOURCE_REPOSITORY: akra-devs/akra-waxball-flutter
@@ -33,12 +44,15 @@ jobs:
       source_sha: ${{ steps.resolve.outputs.source_sha }}
       source_run_id: ${{ steps.resolve.outputs.source_run_id }}
     steps:
-      - name: Resolve latest successful private build
+      - name: Resolve requested private build
         id: resolve
         shell: bash
         env:
           SOURCE_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
           TARGET_TOKEN: ${{ github.token }}
+          REQUESTED_RUN_ID: ${{ inputs.source_run_id }}
+          REQUESTED_RUN_ATTEMPT: ${{ inputs.source_run_attempt }}
+          REQUESTED_SOURCE_SHA: ${{ inputs.source_sha }}
           FORCE_DEPLOY: ${{ inputs.force }}
         run: |
           set -euo pipefail
@@ -61,27 +75,49 @@ jobs:
             exit 1
           fi
 
-          runs_json="$(GH_TOKEN="$SOURCE_TOKEN" gh api \
-            -H 'Accept: application/vnd.github+json' \
-            "/repos/${SOURCE_REPOSITORY}/actions/workflows/${SOURCE_WORKFLOW}/runs?branch=main&status=success&per_page=20")"
+          if [[ ! "$REQUESTED_RUN_ID" =~ ^[0-9]+$ ]]; then
+            echo '::error title=Invalid source run::source_run_id must be numeric.'
+            exit 1
+          fi
+          if [[ ! "$REQUESTED_RUN_ATTEMPT" =~ ^[1-9][0-9]*$ ]]; then
+            echo '::error title=Invalid source attempt::source_run_attempt must be a positive integer.'
+            exit 1
+          fi
+          if [[ ! "$REQUESTED_SOURCE_SHA" =~ ^[0-9a-f]{40}$ ]]; then
+            echo '::error title=Invalid source SHA::source_sha must be a full lowercase commit SHA.'
+            exit 1
+          fi
 
-          run_id="$(jq -r '
-            [.workflow_runs[]
-              | select(
-                  (.event == "push" or .event == "workflow_dispatch")
-                  and .head_branch == "main"
-                )
-            ][0].id // empty
-          ' <<<"$runs_json")"
-          source_sha="$(jq -r --argjson run_id "${run_id:-0}" '
-            [.workflow_runs[] | select(.id == $run_id)][0].head_sha // empty
-          ' <<<"$runs_json")"
-          run_attempt="$(jq -r --argjson run_id "${run_id:-0}" '
-            [.workflow_runs[] | select(.id == $run_id)][0].run_attempt // empty
-          ' <<<"$runs_json")"
+          run_json=''
+          for poll in $(seq 1 30); do
+            run_json="$(GH_TOKEN="$SOURCE_TOKEN" gh api \
+              -H 'Accept: application/vnd.github+json' \
+              "/repos/${SOURCE_REPOSITORY}/actions/runs/${REQUESTED_RUN_ID}")"
+            if [[ "$(jq -r '.status' <<<"$run_json")" == 'completed' ]]; then
+              break
+            fi
+            echo "Private build is still finalizing (${poll}/30)."
+            sleep 2
+          done
 
-          if [[ -z "$run_id" || -z "$source_sha" || -z "$run_attempt" ]]; then
-            echo '::error title=No deployable build::No successful main-branch Waxball artifact build was found.'
+          run_id="$(jq -r '.id // empty' <<<"$run_json")"
+          run_attempt="$(jq -r '.run_attempt // empty' <<<"$run_json")"
+          source_sha="$(jq -r '.head_sha // empty' <<<"$run_json")"
+          source_branch="$(jq -r '.head_branch // empty' <<<"$run_json")"
+          source_event="$(jq -r '.event // empty' <<<"$run_json")"
+          source_status="$(jq -r '.status // empty' <<<"$run_json")"
+          source_conclusion="$(jq -r '.conclusion // empty' <<<"$run_json")"
+          source_workflow_path="$(jq -r '.path // empty' <<<"$run_json")"
+
+          if [[ "$run_id" != "$REQUESTED_RUN_ID" ||
+                "$run_attempt" != "$REQUESTED_RUN_ATTEMPT" ||
+                "$source_sha" != "$REQUESTED_SOURCE_SHA" ||
+                "$source_branch" != 'main' ||
+                "$source_event" != 'workflow_dispatch' ||
+                "$source_status" != 'completed' ||
+                "$source_conclusion" != 'success' ||
+                "$source_workflow_path" != ".github/workflows/${SOURCE_WORKFLOW}" ]]; then
+            echo '::error title=Untrusted source build::The requested private run did not match the expected successful main release.'
             exit 1
           fi
 
