@@ -155,9 +155,17 @@ jobs:
             exit 1
           fi
 
-          release_json="$(GH_TOKEN="$TARGET_TOKEN" gh api \
+          releases_json="$(GH_TOKEN="$TARGET_TOKEN" gh api \
             -H 'Accept: application/vnd.github+json' \
-            "/repos/${GITHUB_REPOSITORY}/releases/tags/${REQUESTED_HANDOFF_TAG}")"
+            "/repos/${GITHUB_REPOSITORY}/releases?per_page=100")"
+          release_json="$(jq -c --arg tag "$REQUESTED_HANDOFF_TAG" '
+            [.[] | select(.tag_name == $tag and .draft == true)][0] // empty
+          ' <<<"$releases_json")"
+          if [[ -z "$release_json" ]]; then
+            echo '::error title=Missing handoff release::The requested temporary draft release was not found.'
+            exit 1
+          fi
+
           release_tag="$(jq -r '.tag_name // empty' <<<"$release_json")"
           release_target="$(jq -r '.target_commitish // empty' <<<"$release_json")"
           release_draft="$(jq -r '.draft // empty' <<<"$release_json")"
