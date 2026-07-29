@@ -305,5 +305,4 @@ jobs:
           set -euo pipefail
           GH_TOKEN="$TARGET_TOKEN" gh release delete "$HANDOFF_TAG" \
             --repo "$GITHUB_REPOSITORY" \
-            --cleanup-tag \
             --yes
