@@ -35,10 +35,10 @@ on:
         type: boolean
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
-  group: waxball-pages-sync
+  group: akra-waxball-web-delivery
   cancel-in-progress: true
 
 env:
@@ -50,10 +50,17 @@ jobs:
   deploy-gh-pages:
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    permissions:
+      contents: write
     environment:
       name: waxball-production
       url: https://waxball.akra.kr/
     steps:
+      - name: Check out public deployment controller
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+
       - name: Resolve requested private build and handoff
         id: resolve
         shell: bash
