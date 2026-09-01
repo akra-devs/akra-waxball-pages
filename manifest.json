@@ -1,0 +1,45 @@
+{
+    "name": "WAXBALL",
+    "short_name": "WAXBALL",
+    "lang": "ko",
+    "dir": "ltr",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#263968",
+    "theme_color": "#263968",
+    "description": "오팔 베이비 한 알을 웹에서 바로 깨뜨리는 WAXBALL 체험. 전체 경험은 Android 앱에서 이어집니다.",
+    "categories": ["games", "entertainment"],
+    "orientation": "portrait-primary",
+    "prefer_related_applications": false,
+    "related_applications": [
+        {
+            "platform": "play",
+            "url": "https://play.google.com/store/apps/details?id=kr.akra.waxball",
+            "id": "kr.akra.waxball"
+        }
+    ],
+    "icons": [
+        {
+            "src": "icons/Icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/Icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/Icon-maskable-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "icons/Icon-maskable-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ]
+}

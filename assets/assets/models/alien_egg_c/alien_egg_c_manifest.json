@@ -1,0 +1,1126 @@
+{
+  "assetId": "xeno_drake_egg_c_v1",
+  "schemaVersion": 2,
+  "source": "tools/blender/build_alien_egg_c_asset.py",
+  "blenderVersion": "5.1.2",
+  "seed": 977,
+  "contract": {
+    "root": "WB_ROOT",
+    "shellRoot": "SHELL_SHARDS",
+    "capRoot": "CAP_ROOT",
+    "core": "CORE_BODY",
+    "shardCount": 28,
+    "morphs": [
+      "PRESS",
+      "BULGE_L",
+      "BULGE_R",
+      "RELEASE",
+      "WOBBLE_X",
+      "WOBBLE_Z",
+      "BREATHE",
+      "FAIL_TREMBLE"
+    ],
+    "materials": [
+      "M_WAX_SHELL",
+      "M_CORE_ATLAS",
+      "M_CRYSTAL"
+    ],
+    "crystalPieces": [
+      "CAP_HALO",
+      "CAP_NECK",
+      "CAP_CRYSTAL_00",
+      "CAP_CRYSTAL_01",
+      "CAP_CRYSTAL_02",
+      "CAP_CRYSTAL_03",
+      "CAP_CRYSTAL_04",
+      "CAP_CRYSTAL_05"
+    ],
+    "geometrySource": "C-only Blender primitives plus deterministic seven-rib alien egg fracture; single joined xeno-drake CORE_BODY; no imported legacy or A/B geometry",
+    "coreRole": "cute_scary_alien_dragon_hatchling",
+    "coreSingleMesh": true,
+    "variantScope": "C_ONLY"
+  },
+  "model": {
+    "native": {
+      "path": "assets/models/alien_egg_c/alien_egg_c.glb",
+      "bytes": 14378000,
+      "sha256": "61e89ac6662976bf0e6139bd8739066616677cbcba059e3bb9928d6ccadde737",
+      "triangles": 25884
+    },
+    "runtime": {
+      "path": "assets/models/alien_egg_c/alien_egg_c_runtime.gltf",
+      "bytes": 8092982,
+      "sha256": "c46c9c4517fd7784ed072027986562d34deb5055d013b230a96bfb3582bf11ed",
+      "packaging": "GLTF_EMBEDDED",
+      "triangles": 25884
+    }
+  },
+  "shape": {
+    "bounds": {
+      "min": [
+        -0.99755,
+        -0.832511,
+        -1.28
+      ],
+      "max": [
+        1.124834,
+        0.830212,
+        1.28
+      ],
+      "size": [
+        2.122384,
+        1.662723,
+        2.56
+      ]
+    },
+    "aspectRatioXYZ": [
+      1.276451,
+      1.0,
+      1.539643
+    ],
+    "radial": {
+      "min": 0.770523,
+      "max": 1.299282,
+      "mean": 1.033839,
+      "std": 0.13245,
+      "rmsDeviationFromUnitSphere": 0.136704
+    },
+    "outerVertices": 3166,
+    "shellTriangles": 12552,
+    "triangles": 25884,
+    "geometrySha256": "3fb49d8c0d3f116cc197dc307c396a82ce6f268529b5ec51f372d88512c7e6c0"
+  },
+  "textures": {
+    "shellBaseColor": {
+      "path": "assets/textures/alien_egg_c/alien_shell_basecolor_2k.png",
+      "bytes": 1296925,
+      "sha256": "54f28a0d4089e2697d48707f2fad0e9971ab956d68a114eb5550464459752967",
+      "size": [
+        2048,
+        1024
+      ],
+      "colorSpace": "sRGB",
+      "semantic": "baseColor",
+      "channels": "RGB=sRGB color,A=1",
+      "bake": {
+        "engine": "CYCLES",
+        "operator": "bpy.ops.object.bake",
+        "type": "EMIT",
+        "source": "build/blender/alien_egg_c/source_fields/shell_base_source.png"
+      }
+    },
+    "shellNormal": {
+      "path": "assets/textures/alien_egg_c/alien_shell_normal_2k.png",
+      "bytes": 2725970,
+      "sha256": "d805f38396faa47ddc246608690c3eb55707d1f9b2484e788fe7d6b9804aff76",
+      "size": [
+        2048,
+        1024
+      ],
+      "colorSpace": "Non-Color",
+      "semantic": "tangentNormal",
+      "channels": "RGB=XYZ tangent normal,A=1",
+      "bake": {
+        "engine": "CYCLES",
+        "operator": "bpy.ops.object.bake",
+        "type": "NORMAL",
+        "source": "build/blender/alien_egg_c/source_fields/shell_height_source.png"
+      }
+    },
+    "shellOrm": {
+      "path": "assets/textures/alien_egg_c/alien_shell_orm_2k.png",
+      "bytes": 960544,
+      "sha256": "f0a2b59813c8c9d9c2d690d32c658ac4a8fde69328a90fa6b7d922aeb101b275",
+      "size": [
+        2048,
+        1024
+      ],
+      "colorSpace": "Non-Color",
+      "semantic": "occlusionRoughnessMetallic",
+      "channels": "R=AO,G=roughness,B=metallic,A=1",
+      "bake": {
+        "engine": "CYCLES",
+        "operator": "bpy.ops.object.bake + deterministic channel pack",
+        "type": "EMIT(AO)+ROUGHNESS",
+        "source": [
+          "build/blender/alien_egg_c/source_fields/shell_ao_source.png",
+          "build/blender/alien_egg_c/source_fields/shell_rough_source.png"
+        ]
+      }
+    },
+    "shellEmissiveMask": {
+      "path": "assets/textures/alien_egg_c/alien_shell_emissive_mask_2k.png",
+      "bytes": 1414337,
+      "sha256": "17188850c6e2779028b4d312bdb7b4fa90ee0df1762c710fd4143b6558725547",
+      "size": [
+        2048,
+        1024
+      ],
+      "colorSpace": "sRGB",
+      "semantic": "chromaticEmissiveMask",
+      "channels": "RGB=cyan/magenta emission color multiplied by authored mask,A=1",
+      "bake": {
+        "engine": "CYCLES",
+        "operator": "bpy.ops.object.bake",
+        "type": "EMIT",
+        "source": "build/blender/alien_egg_c/source_fields/shell_emission_source.png"
+      },
+      "statistics": {
+        "mean": 0.063121,
+        "p95": 0.278431,
+        "coverageAbove0_35": 0.018637,
+        "coverageAbove0_5": 0.005538
+      }
+    },
+    "coreBaseColor": {
+      "path": "assets/textures/alien_egg_c/alien_core_basecolor_2k.png",
+      "bytes": 1238343,
+      "sha256": "6451f4127b5235a89400fade35cd4481cb322798b7f699436d91f9c140375705",
+      "size": [
+        2048,
+        1024
+      ],
+      "colorSpace": "sRGB",
+      "semantic": "baseColor",
+      "channels": "RGB=sRGB color,A=1",
+      "bake": {
+        "engine": "CYCLES",
+        "operator": "bpy.ops.object.bake",
+        "type": "EMIT",
+        "source": "build/blender/alien_egg_c/source_fields/core_base_source.png"
+      }
+    },
+    "coreNormal": {
+      "path": "assets/textures/alien_egg_c/alien_core_normal_2k.png",
+      "bytes": 2400674,
+      "sha256": "ff9896303fac59f094937a1afc87c30db8aee23c4c63bb5d50f9f447a0129304",
+      "size": [
+        2048,
+        1024
+      ],
+      "colorSpace": "Non-Color",
+      "semantic": "tangentNormal",
+      "channels": "RGB=XYZ tangent normal,A=1",
+      "bake": {
+        "engine": "CYCLES",
+        "operator": "bpy.ops.object.bake",
+        "type": "NORMAL",
+        "source": "build/blender/alien_egg_c/source_fields/core_height_source.png"
+      }
+    },
+    "coreOrm": {
+      "path": "assets/textures/alien_egg_c/alien_core_orm_2k.png",
+      "bytes": 1236376,
+      "sha256": "694f0afb8222b8697da9b07c63bf25d7199756c117c355d4fd5dd48e68ed3ada",
+      "size": [
+        2048,
+        1024
+      ],
+      "colorSpace": "Non-Color",
+      "semantic": "occlusionRoughnessMetallic",
+      "channels": "R=AO,G=roughness,B=metallic,A=1",
+      "bake": {
+        "engine": "CYCLES",
+        "operator": "bpy.ops.object.bake + deterministic channel pack",
+        "type": "EMIT(AO)+ROUGHNESS",
+        "source": [
+          "build/blender/alien_egg_c/source_fields/core_ao_source.png",
+          "build/blender/alien_egg_c/source_fields/core_rough_source.png"
+        ]
+      }
+    },
+    "coreEmissiveMask": {
+      "path": "assets/textures/alien_egg_c/alien_core_emissive_mask_2k.png",
+      "bytes": 1230625,
+      "sha256": "6bcc0f950e0a606209a1938fd388c7a01c2e8d58a611ab56d8595045f769f83d",
+      "size": [
+        2048,
+        1024
+      ],
+      "colorSpace": "sRGB",
+      "semantic": "chromaticEmissiveMask",
+      "channels": "RGB=cyan/magenta emission color multiplied by authored mask,A=1",
+      "bake": {
+        "engine": "CYCLES",
+        "operator": "bpy.ops.object.bake",
+        "type": "EMIT",
+        "source": "build/blender/alien_egg_c/source_fields/core_emission_source.png"
+      },
+      "statistics": {
+        "mean": 0.072302,
+        "p95": 0.294118,
+        "coverageAbove0_35": 0.020197,
+        "coverageAbove0_5": 0.0
+      }
+    },
+    "crackAtlas": {
+      "path": "assets/textures/alien_egg_c/alien_crack_atlas_2k.png",
+      "bytes": 2339347,
+      "sha256": "eff5d8ab1e71a1d29ffc83c4266b8dc517fb68f3ad04644e8e5228822db77fbf",
+      "size": [
+        2048,
+        1024
+      ],
+      "colorSpace": "Non-Color",
+      "semantic": "fractureAtlas",
+      "channels": "R=signed-distance,G=activation,B=depth,A=regionId",
+      "bake": {
+        "engine": "Blender bundled NumPy UV raster",
+        "operator": "deterministic spherical Voronoi field",
+        "type": "RGBA fracture contract",
+        "source": "shared glowball fracture seeds"
+      }
+    }
+  },
+  "fracture": {
+    "seed": 977,
+    "sourceTriangles": 5120,
+    "regions": [
+      {
+        "shardId": 0,
+        "outerTriangles": 182,
+        "boundaryEdges": 44,
+        "neighbors": [
+          1,
+          2,
+          3,
+          5,
+          8
+        ]
+      },
+      {
+        "shardId": 1,
+        "outerTriangles": 182,
+        "boundaryEdges": 44,
+        "neighbors": [
+          0,
+          2,
+          3,
+          4,
+          6,
+          9
+        ]
+      },
+      {
+        "shardId": 2,
+        "outerTriangles": 178,
+        "boundaryEdges": 42,
+        "neighbors": [
+          0,
+          1,
+          4,
+          5,
+          7,
+          10
+        ]
+      },
+      {
+        "shardId": 3,
+        "outerTriangles": 169,
+        "boundaryEdges": 41,
+        "neighbors": [
+          0,
+          1,
+          6,
+          8,
+          11
+        ]
+      },
+      {
+        "shardId": 4,
+        "outerTriangles": 188,
+        "boundaryEdges": 46,
+        "neighbors": [
+          1,
+          2,
+          7,
+          9,
+          12
+        ]
+      },
+      {
+        "shardId": 5,
+        "outerTriangles": 180,
+        "boundaryEdges": 46,
+        "neighbors": [
+          0,
+          2,
+          8,
+          10,
+          13
+        ]
+      },
+      {
+        "shardId": 6,
+        "outerTriangles": 176,
+        "boundaryEdges": 40,
+        "neighbors": [
+          1,
+          3,
+          9,
+          11,
+          14
+        ]
+      },
+      {
+        "shardId": 7,
+        "outerTriangles": 178,
+        "boundaryEdges": 42,
+        "neighbors": [
+          2,
+          4,
+          10,
+          12,
+          15
+        ]
+      },
+      {
+        "shardId": 8,
+        "outerTriangles": 191,
+        "boundaryEdges": 45,
+        "neighbors": [
+          0,
+          3,
+          5,
+          11,
+          13,
+          16
+        ]
+      },
+      {
+        "shardId": 9,
+        "outerTriangles": 197,
+        "boundaryEdges": 39,
+        "neighbors": [
+          1,
+          4,
+          6,
+          12,
+          14,
+          17
+        ]
+      },
+      {
+        "shardId": 10,
+        "outerTriangles": 197,
+        "boundaryEdges": 39,
+        "neighbors": [
+          2,
+          5,
+          7,
+          13,
+          15,
+          18
+        ]
+      },
+      {
+        "shardId": 11,
+        "outerTriangles": 188,
+        "boundaryEdges": 42,
+        "neighbors": [
+          3,
+          6,
+          8,
+          14,
+          16,
+          19
+        ]
+      },
+      {
+        "shardId": 12,
+        "outerTriangles": 181,
+        "boundaryEdges": 43,
+        "neighbors": [
+          4,
+          7,
+          9,
+          15,
+          17,
+          20
+        ]
+      },
+      {
+        "shardId": 13,
+        "outerTriangles": 174,
+        "boundaryEdges": 42,
+        "neighbors": [
+          5,
+          8,
+          10,
+          16,
+          18,
+          21
+        ]
+      },
+      {
+        "shardId": 14,
+        "outerTriangles": 169,
+        "boundaryEdges": 39,
+        "neighbors": [
+          6,
+          9,
+          11,
+          17,
+          19,
+          22
+        ]
+      },
+      {
+        "shardId": 15,
+        "outerTriangles": 176,
+        "boundaryEdges": 38,
+        "neighbors": [
+          7,
+          10,
+          12,
+          18,
+          20,
+          23
+        ]
+      },
+      {
+        "shardId": 16,
+        "outerTriangles": 180,
+        "boundaryEdges": 40,
+        "neighbors": [
+          8,
+          11,
+          13,
+          19,
+          21,
+          24
+        ]
+      },
+      {
+        "shardId": 17,
+        "outerTriangles": 192,
+        "boundaryEdges": 42,
+        "neighbors": [
+          9,
+          12,
+          14,
+          20,
+          22,
+          25
+        ]
+      },
+      {
+        "shardId": 18,
+        "outerTriangles": 200,
+        "boundaryEdges": 42,
+        "neighbors": [
+          10,
+          13,
+          15,
+          21,
+          23,
+          26
+        ]
+      },
+      {
+        "shardId": 19,
+        "outerTriangles": 203,
+        "boundaryEdges": 41,
+        "neighbors": [
+          11,
+          14,
+          16,
+          22,
+          24,
+          27
+        ]
+      },
+      {
+        "shardId": 20,
+        "outerTriangles": 194,
+        "boundaryEdges": 40,
+        "neighbors": [
+          12,
+          15,
+          17,
+          23,
+          25
+        ]
+      },
+      {
+        "shardId": 21,
+        "outerTriangles": 186,
+        "boundaryEdges": 38,
+        "neighbors": [
+          13,
+          16,
+          18,
+          24,
+          26
+        ]
+      },
+      {
+        "shardId": 22,
+        "outerTriangles": 178,
+        "boundaryEdges": 40,
+        "neighbors": [
+          14,
+          17,
+          19,
+          25,
+          27
+        ]
+      },
+      {
+        "shardId": 23,
+        "outerTriangles": 183,
+        "boundaryEdges": 43,
+        "neighbors": [
+          15,
+          18,
+          20,
+          25,
+          26
+        ]
+      },
+      {
+        "shardId": 24,
+        "outerTriangles": 161,
+        "boundaryEdges": 37,
+        "neighbors": [
+          16,
+          19,
+          21,
+          26,
+          27
+        ]
+      },
+      {
+        "shardId": 25,
+        "outerTriangles": 176,
+        "boundaryEdges": 40,
+        "neighbors": [
+          17,
+          20,
+          22,
+          23,
+          26,
+          27
+        ]
+      },
+      {
+        "shardId": 26,
+        "outerTriangles": 177,
+        "boundaryEdges": 41,
+        "neighbors": [
+          18,
+          21,
+          23,
+          24,
+          25,
+          27
+        ]
+      },
+      {
+        "shardId": 27,
+        "outerTriangles": 184,
+        "boundaryEdges": 40,
+        "neighbors": [
+          19,
+          22,
+          24,
+          25,
+          26
+        ]
+      }
+    ],
+    "atlasChannels": "R=signed-distance,G=activation,B=depth,A=regionId"
+  },
+  "legacyIsolation": {
+    "before": {
+      "assets/models/waxball/hero.glb": {
+        "bytes": 5422824,
+        "sha256": "4b181d7c15190d831e89379ecc25c643b989e057be507459913ccb1dcde899c2"
+      },
+      "assets/models/waxball/hero_runtime.gltf": {
+        "bytes": 4299240,
+        "sha256": "5b4219c4acbd5208267e4d3893b7f70b748b5c671a04f03b997e67c410dbc2a9"
+      },
+      "assets/textures/waxball/shell_basecolor_2k.png": {
+        "bytes": 1259720,
+        "sha256": "f925e58679e375fa1742c6668108257342036bf49c65d875c817b25ba0c43d9e"
+      },
+      "assets/textures/waxball/shell_normal_2k.png": {
+        "bytes": 230620,
+        "sha256": "533e20c306e1a8f89e0c0823bdd507bde2092ca2371c7797a74dfd8e750749cd"
+      },
+      "assets/textures/waxball/shell_roughness_2k.png": {
+        "bytes": 422061,
+        "sha256": "e89184fa11e870621bab3237c6227c081703dfb51c42fdcbd0b931f267f740cb"
+      },
+      "assets/textures/waxball/shell_crack_atlas_2k.png": {
+        "bytes": 2264519,
+        "sha256": "9d7f7ff0fa5262fd22ad4c778eb44a8c4524bc46530de3b75efca1133bd43297"
+      },
+      "assets/textures/waxball/shell_crack_height_2k.png": {
+        "bytes": 681683,
+        "sha256": "c5e627c17fd6dc0dbe401727c7e6e9efb4480fdbdabbdaae186f8ce896ff00f9"
+      },
+      "assets/textures/waxball/shell_thickness_2k.png": {
+        "bytes": 393123,
+        "sha256": "1e01febb1364dc696ca04e2b1dc095220d30f467b341e9ce6d5cdcffdf53b575"
+      },
+      "assets/textures/waxball/core_basecolor_2k.png": {
+        "bytes": 1040521,
+        "sha256": "59bb93e0e9c892be26c069ec6655882b7324b83b7b758c281c41778fb899db8a"
+      },
+      "assets/textures/waxball/core_normal_2k.png": {
+        "bytes": 160621,
+        "sha256": "a1a6845a3e4b713449f7857d380f31e55735e189ea54298be2c3f3c94cea2806"
+      },
+      "assets/textures/waxball/core_roughness_2k.png": {
+        "bytes": 500948,
+        "sha256": "81340f92f3f0933324d8546c7ebbfb3b0829931d753fbd6c9f2a2a21eaa3186d"
+      },
+      "assets/textures/waxball/core_thickness_2k.png": {
+        "bytes": 302645,
+        "sha256": "8f7634245d7d733173c513fb3480c5361e72056d3071ee94fd2d0cc88c1d013e"
+      },
+      "assets/models/glowball/glowball_ab.glb": {
+        "bytes": 13353864,
+        "sha256": "713c773febf57ab042b44c059a8c3c72decf4bc103bfea71667f0844b97feb3d"
+      },
+      "assets/models/glowball/glowball_ab_runtime.gltf": {
+        "bytes": 6816940,
+        "sha256": "db6cdd1106e15799b69e8ad5ed4cdfc9d2b6d57ee225a5f8537a10e5f387a80f"
+      },
+      "assets/models/glowball/glowball_ab_manifest.json": {
+        "bytes": 18792,
+        "sha256": "22ebe8280a0844b7130e1863ceeaddb6a322621bcdd8d75ea17359a0bffcbf4d"
+      },
+      "assets/models/glowball/glowball_ab_qa.json": {
+        "bytes": 8662,
+        "sha256": "ca4e59a71a8b43fb303a482014b8f96883438f102680171162a0f0de5faa604b"
+      },
+      "assets/textures/glowball/glow_shell_basecolor_2k.png": {
+        "bytes": 1348225,
+        "sha256": "ca7501dc95bb641a262e0e0dd3661ea308b51e5431762b3715ebd2ae2c3a9c26"
+      },
+      "assets/textures/glowball/glow_shell_normal_2k.png": {
+        "bytes": 2774982,
+        "sha256": "ac0bce8542bc6768adb70e9d3a5b2337df02d788fb721c26875133839a11b160"
+      },
+      "assets/textures/glowball/glow_shell_orm_2k.png": {
+        "bytes": 1044588,
+        "sha256": "658cb54e6cc792943d8d4810d951e28b76a5c833e9bc04bbf45b5c7b53dc9b24"
+      },
+      "assets/textures/glowball/glow_shell_emissive_mask_2k.png": {
+        "bytes": 952945,
+        "sha256": "c0e0f1bb3ab5a9667e891e8800acd88e8bec7bd623c46aed95eca79d375776f3"
+      },
+      "assets/textures/glowball/glow_core_basecolor_2k.png": {
+        "bytes": 1833860,
+        "sha256": "0e532c7d4be51c84bb7561e4e69f4c1d517e50108c04237ef8ec318a0c6cf301"
+      },
+      "assets/textures/glowball/glow_core_normal_2k.png": {
+        "bytes": 2151627,
+        "sha256": "7c24dbecde0aaadeea0c03a0db902bf34958c7b9d60dfe7340fc5f5154580dc3"
+      },
+      "assets/textures/glowball/glow_core_orm_2k.png": {
+        "bytes": 1090633,
+        "sha256": "793fb7a9eaea2f2551e5d7b14799a11f62e5ee6f00dbc22ba82dedc7d23e2f29"
+      },
+      "assets/textures/glowball/glow_core_emissive_mask_2k.png": {
+        "bytes": 914595,
+        "sha256": "9ba1ecf03390c267f726b1f70dd8665af32276c805355f1a93d5581ba76526de"
+      },
+      "assets/textures/glowball/glow_crack_atlas_2k.png": {
+        "bytes": 2358659,
+        "sha256": "319f228a0e5d6d74604c9174db92001f2097939c5e043e991f0bda2ee1cb6a1b"
+      },
+      "assets/renders/glowball_stage0_blender.png": {
+        "bytes": 1319382,
+        "sha256": "2de8e9c45c23962ce59383884fa2594cdd2d79a298941cfa4322c0af61cb5ac9"
+      },
+      "assets/renders/glowball_stage0_transparent.png": {
+        "bytes": 1284892,
+        "sha256": "6f5f8f4f9902433f9ad8e0918044c768d0392e50527eb2f5e73c95c9bc930215"
+      },
+      "assets/images/waxball-select-xeno-c.png": {
+        "bytes": 2416643,
+        "sha256": "aa77b9d53ec2a74d8ece366114a837c5d76031aa491a7f2d634abf26a108f53e"
+      },
+      "docs/concepts/alien-drake-hatchling-c.png": {
+        "bytes": 2360896,
+        "sha256": "73edbde4fbc99a2ed5216623e1d5de4557c2ed2e2a77467831fe03f3869dd0e4"
+      }
+    },
+    "after": {
+      "assets/models/waxball/hero.glb": {
+        "bytes": 5422824,
+        "sha256": "4b181d7c15190d831e89379ecc25c643b989e057be507459913ccb1dcde899c2"
+      },
+      "assets/models/waxball/hero_runtime.gltf": {
+        "bytes": 4299240,
+        "sha256": "5b4219c4acbd5208267e4d3893b7f70b748b5c671a04f03b997e67c410dbc2a9"
+      },
+      "assets/textures/waxball/shell_basecolor_2k.png": {
+        "bytes": 1259720,
+        "sha256": "f925e58679e375fa1742c6668108257342036bf49c65d875c817b25ba0c43d9e"
+      },
+      "assets/textures/waxball/shell_normal_2k.png": {
+        "bytes": 230620,
+        "sha256": "533e20c306e1a8f89e0c0823bdd507bde2092ca2371c7797a74dfd8e750749cd"
+      },
+      "assets/textures/waxball/shell_roughness_2k.png": {
+        "bytes": 422061,
+        "sha256": "e89184fa11e870621bab3237c6227c081703dfb51c42fdcbd0b931f267f740cb"
+      },
+      "assets/textures/waxball/shell_crack_atlas_2k.png": {
+        "bytes": 2264519,
+        "sha256": "9d7f7ff0fa5262fd22ad4c778eb44a8c4524bc46530de3b75efca1133bd43297"
+      },
+      "assets/textures/waxball/shell_crack_height_2k.png": {
+        "bytes": 681683,
+        "sha256": "c5e627c17fd6dc0dbe401727c7e6e9efb4480fdbdabbdaae186f8ce896ff00f9"
+      },
+      "assets/textures/waxball/shell_thickness_2k.png": {
+        "bytes": 393123,
+        "sha256": "1e01febb1364dc696ca04e2b1dc095220d30f467b341e9ce6d5cdcffdf53b575"
+      },
+      "assets/textures/waxball/core_basecolor_2k.png": {
+        "bytes": 1040521,
+        "sha256": "59bb93e0e9c892be26c069ec6655882b7324b83b7b758c281c41778fb899db8a"
+      },
+      "assets/textures/waxball/core_normal_2k.png": {
+        "bytes": 160621,
+        "sha256": "a1a6845a3e4b713449f7857d380f31e55735e189ea54298be2c3f3c94cea2806"
+      },
+      "assets/textures/waxball/core_roughness_2k.png": {
+        "bytes": 500948,
+        "sha256": "81340f92f3f0933324d8546c7ebbfb3b0829931d753fbd6c9f2a2a21eaa3186d"
+      },
+      "assets/textures/waxball/core_thickness_2k.png": {
+        "bytes": 302645,
+        "sha256": "8f7634245d7d733173c513fb3480c5361e72056d3071ee94fd2d0cc88c1d013e"
+      },
+      "assets/models/glowball/glowball_ab.glb": {
+        "bytes": 13353864,
+        "sha256": "713c773febf57ab042b44c059a8c3c72decf4bc103bfea71667f0844b97feb3d"
+      },
+      "assets/models/glowball/glowball_ab_runtime.gltf": {
+        "bytes": 6816940,
+        "sha256": "db6cdd1106e15799b69e8ad5ed4cdfc9d2b6d57ee225a5f8537a10e5f387a80f"
+      },
+      "assets/models/glowball/glowball_ab_manifest.json": {
+        "bytes": 18792,
+        "sha256": "22ebe8280a0844b7130e1863ceeaddb6a322621bcdd8d75ea17359a0bffcbf4d"
+      },
+      "assets/models/glowball/glowball_ab_qa.json": {
+        "bytes": 8662,
+        "sha256": "ca4e59a71a8b43fb303a482014b8f96883438f102680171162a0f0de5faa604b"
+      },
+      "assets/textures/glowball/glow_shell_basecolor_2k.png": {
+        "bytes": 1348225,
+        "sha256": "ca7501dc95bb641a262e0e0dd3661ea308b51e5431762b3715ebd2ae2c3a9c26"
+      },
+      "assets/textures/glowball/glow_shell_normal_2k.png": {
+        "bytes": 2774982,
+        "sha256": "ac0bce8542bc6768adb70e9d3a5b2337df02d788fb721c26875133839a11b160"
+      },
+      "assets/textures/glowball/glow_shell_orm_2k.png": {
+        "bytes": 1044588,
+        "sha256": "658cb54e6cc792943d8d4810d951e28b76a5c833e9bc04bbf45b5c7b53dc9b24"
+      },
+      "assets/textures/glowball/glow_shell_emissive_mask_2k.png": {
+        "bytes": 952945,
+        "sha256": "c0e0f1bb3ab5a9667e891e8800acd88e8bec7bd623c46aed95eca79d375776f3"
+      },
+      "assets/textures/glowball/glow_core_basecolor_2k.png": {
+        "bytes": 1833860,
+        "sha256": "0e532c7d4be51c84bb7561e4e69f4c1d517e50108c04237ef8ec318a0c6cf301"
+      },
+      "assets/textures/glowball/glow_core_normal_2k.png": {
+        "bytes": 2151627,
+        "sha256": "7c24dbecde0aaadeea0c03a0db902bf34958c7b9d60dfe7340fc5f5154580dc3"
+      },
+      "assets/textures/glowball/glow_core_orm_2k.png": {
+        "bytes": 1090633,
+        "sha256": "793fb7a9eaea2f2551e5d7b14799a11f62e5ee6f00dbc22ba82dedc7d23e2f29"
+      },
+      "assets/textures/glowball/glow_core_emissive_mask_2k.png": {
+        "bytes": 914595,
+        "sha256": "9ba1ecf03390c267f726b1f70dd8665af32276c805355f1a93d5581ba76526de"
+      },
+      "assets/textures/glowball/glow_crack_atlas_2k.png": {
+        "bytes": 2358659,
+        "sha256": "319f228a0e5d6d74604c9174db92001f2097939c5e043e991f0bda2ee1cb6a1b"
+      },
+      "assets/renders/glowball_stage0_blender.png": {
+        "bytes": 1319382,
+        "sha256": "2de8e9c45c23962ce59383884fa2594cdd2d79a298941cfa4322c0af61cb5ac9"
+      },
+      "assets/renders/glowball_stage0_transparent.png": {
+        "bytes": 1284892,
+        "sha256": "6f5f8f4f9902433f9ad8e0918044c768d0392e50527eb2f5e73c95c9bc930215"
+      },
+      "assets/images/waxball-select-xeno-c.png": {
+        "bytes": 2416643,
+        "sha256": "aa77b9d53ec2a74d8ece366114a837c5d76031aa491a7f2d634abf26a108f53e"
+      },
+      "docs/concepts/alien-drake-hatchling-c.png": {
+        "bytes": 2360896,
+        "sha256": "73edbde4fbc99a2ed5216623e1d5de4557c2ed2e2a77467831fe03f3869dd0e4"
+      }
+    },
+    "unchanged": true
+  },
+  "variantScope": "C_ONLY",
+  "concept": {
+    "closedShell": "mysterious seven-rib bioluminescent alien wax egg",
+    "breakReveal": "cute but mildly frightening horned xeno-drake hatchling",
+    "coreTopology": "one joined CORE_BODY mesh with layered slit eyes, tapered reptile snout, nostrils, jaw, horns, cranial crest, bat membranes, fangs and curled barbed tail",
+    "cap": "dark organic calyx with six curved tapered sensory tendrils"
+  },
+  "protectedIsolation": {
+    "before": {
+      "assets/models/waxball/hero.glb": {
+        "bytes": 5422824,
+        "sha256": "4b181d7c15190d831e89379ecc25c643b989e057be507459913ccb1dcde899c2"
+      },
+      "assets/models/waxball/hero_runtime.gltf": {
+        "bytes": 4299240,
+        "sha256": "5b4219c4acbd5208267e4d3893b7f70b748b5c671a04f03b997e67c410dbc2a9"
+      },
+      "assets/textures/waxball/shell_basecolor_2k.png": {
+        "bytes": 1259720,
+        "sha256": "f925e58679e375fa1742c6668108257342036bf49c65d875c817b25ba0c43d9e"
+      },
+      "assets/textures/waxball/shell_normal_2k.png": {
+        "bytes": 230620,
+        "sha256": "533e20c306e1a8f89e0c0823bdd507bde2092ca2371c7797a74dfd8e750749cd"
+      },
+      "assets/textures/waxball/shell_roughness_2k.png": {
+        "bytes": 422061,
+        "sha256": "e89184fa11e870621bab3237c6227c081703dfb51c42fdcbd0b931f267f740cb"
+      },
+      "assets/textures/waxball/shell_crack_atlas_2k.png": {
+        "bytes": 2264519,
+        "sha256": "9d7f7ff0fa5262fd22ad4c778eb44a8c4524bc46530de3b75efca1133bd43297"
+      },
+      "assets/textures/waxball/shell_crack_height_2k.png": {
+        "bytes": 681683,
+        "sha256": "c5e627c17fd6dc0dbe401727c7e6e9efb4480fdbdabbdaae186f8ce896ff00f9"
+      },
+      "assets/textures/waxball/shell_thickness_2k.png": {
+        "bytes": 393123,
+        "sha256": "1e01febb1364dc696ca04e2b1dc095220d30f467b341e9ce6d5cdcffdf53b575"
+      },
+      "assets/textures/waxball/core_basecolor_2k.png": {
+        "bytes": 1040521,
+        "sha256": "59bb93e0e9c892be26c069ec6655882b7324b83b7b758c281c41778fb899db8a"
+      },
+      "assets/textures/waxball/core_normal_2k.png": {
+        "bytes": 160621,
+        "sha256": "a1a6845a3e4b713449f7857d380f31e55735e189ea54298be2c3f3c94cea2806"
+      },
+      "assets/textures/waxball/core_roughness_2k.png": {
+        "bytes": 500948,
+        "sha256": "81340f92f3f0933324d8546c7ebbfb3b0829931d753fbd6c9f2a2a21eaa3186d"
+      },
+      "assets/textures/waxball/core_thickness_2k.png": {
+        "bytes": 302645,
+        "sha256": "8f7634245d7d733173c513fb3480c5361e72056d3071ee94fd2d0cc88c1d013e"
+      },
+      "assets/models/glowball/glowball_ab.glb": {
+        "bytes": 13353864,
+        "sha256": "713c773febf57ab042b44c059a8c3c72decf4bc103bfea71667f0844b97feb3d"
+      },
+      "assets/models/glowball/glowball_ab_runtime.gltf": {
+        "bytes": 6816940,
+        "sha256": "db6cdd1106e15799b69e8ad5ed4cdfc9d2b6d57ee225a5f8537a10e5f387a80f"
+      },
+      "assets/models/glowball/glowball_ab_manifest.json": {
+        "bytes": 18792,
+        "sha256": "22ebe8280a0844b7130e1863ceeaddb6a322621bcdd8d75ea17359a0bffcbf4d"
+      },
+      "assets/models/glowball/glowball_ab_qa.json": {
+        "bytes": 8662,
+        "sha256": "ca4e59a71a8b43fb303a482014b8f96883438f102680171162a0f0de5faa604b"
+      },
+      "assets/textures/glowball/glow_shell_basecolor_2k.png": {
+        "bytes": 1348225,
+        "sha256": "ca7501dc95bb641a262e0e0dd3661ea308b51e5431762b3715ebd2ae2c3a9c26"
+      },
+      "assets/textures/glowball/glow_shell_normal_2k.png": {
+        "bytes": 2774982,
+        "sha256": "ac0bce8542bc6768adb70e9d3a5b2337df02d788fb721c26875133839a11b160"
+      },
+      "assets/textures/glowball/glow_shell_orm_2k.png": {
+        "bytes": 1044588,
+        "sha256": "658cb54e6cc792943d8d4810d951e28b76a5c833e9bc04bbf45b5c7b53dc9b24"
+      },
+      "assets/textures/glowball/glow_shell_emissive_mask_2k.png": {
+        "bytes": 952945,
+        "sha256": "c0e0f1bb3ab5a9667e891e8800acd88e8bec7bd623c46aed95eca79d375776f3"
+      },
+      "assets/textures/glowball/glow_core_basecolor_2k.png": {
+        "bytes": 1833860,
+        "sha256": "0e532c7d4be51c84bb7561e4e69f4c1d517e50108c04237ef8ec318a0c6cf301"
+      },
+      "assets/textures/glowball/glow_core_normal_2k.png": {
+        "bytes": 2151627,
+        "sha256": "7c24dbecde0aaadeea0c03a0db902bf34958c7b9d60dfe7340fc5f5154580dc3"
+      },
+      "assets/textures/glowball/glow_core_orm_2k.png": {
+        "bytes": 1090633,
+        "sha256": "793fb7a9eaea2f2551e5d7b14799a11f62e5ee6f00dbc22ba82dedc7d23e2f29"
+      },
+      "assets/textures/glowball/glow_core_emissive_mask_2k.png": {
+        "bytes": 914595,
+        "sha256": "9ba1ecf03390c267f726b1f70dd8665af32276c805355f1a93d5581ba76526de"
+      },
+      "assets/textures/glowball/glow_crack_atlas_2k.png": {
+        "bytes": 2358659,
+        "sha256": "319f228a0e5d6d74604c9174db92001f2097939c5e043e991f0bda2ee1cb6a1b"
+      },
+      "assets/renders/glowball_stage0_blender.png": {
+        "bytes": 1319382,
+        "sha256": "2de8e9c45c23962ce59383884fa2594cdd2d79a298941cfa4322c0af61cb5ac9"
+      },
+      "assets/renders/glowball_stage0_transparent.png": {
+        "bytes": 1284892,
+        "sha256": "6f5f8f4f9902433f9ad8e0918044c768d0392e50527eb2f5e73c95c9bc930215"
+      },
+      "assets/images/waxball-select-xeno-c.png": {
+        "bytes": 2416643,
+        "sha256": "aa77b9d53ec2a74d8ece366114a837c5d76031aa491a7f2d634abf26a108f53e"
+      },
+      "docs/concepts/alien-drake-hatchling-c.png": {
+        "bytes": 2360896,
+        "sha256": "73edbde4fbc99a2ed5216623e1d5de4557c2ed2e2a77467831fe03f3869dd0e4"
+      }
+    },
+    "after": {
+      "assets/models/waxball/hero.glb": {
+        "bytes": 5422824,
+        "sha256": "4b181d7c15190d831e89379ecc25c643b989e057be507459913ccb1dcde899c2"
+      },
+      "assets/models/waxball/hero_runtime.gltf": {
+        "bytes": 4299240,
+        "sha256": "5b4219c4acbd5208267e4d3893b7f70b748b5c671a04f03b997e67c410dbc2a9"
+      },
+      "assets/textures/waxball/shell_basecolor_2k.png": {
+        "bytes": 1259720,
+        "sha256": "f925e58679e375fa1742c6668108257342036bf49c65d875c817b25ba0c43d9e"
+      },
+      "assets/textures/waxball/shell_normal_2k.png": {
+        "bytes": 230620,
+        "sha256": "533e20c306e1a8f89e0c0823bdd507bde2092ca2371c7797a74dfd8e750749cd"
+      },
+      "assets/textures/waxball/shell_roughness_2k.png": {
+        "bytes": 422061,
+        "sha256": "e89184fa11e870621bab3237c6227c081703dfb51c42fdcbd0b931f267f740cb"
+      },
+      "assets/textures/waxball/shell_crack_atlas_2k.png": {
+        "bytes": 2264519,
+        "sha256": "9d7f7ff0fa5262fd22ad4c778eb44a8c4524bc46530de3b75efca1133bd43297"
+      },
+      "assets/textures/waxball/shell_crack_height_2k.png": {
+        "bytes": 681683,
+        "sha256": "c5e627c17fd6dc0dbe401727c7e6e9efb4480fdbdabbdaae186f8ce896ff00f9"
+      },
+      "assets/textures/waxball/shell_thickness_2k.png": {
+        "bytes": 393123,
+        "sha256": "1e01febb1364dc696ca04e2b1dc095220d30f467b341e9ce6d5cdcffdf53b575"
+      },
+      "assets/textures/waxball/core_basecolor_2k.png": {
+        "bytes": 1040521,
+        "sha256": "59bb93e0e9c892be26c069ec6655882b7324b83b7b758c281c41778fb899db8a"
+      },
+      "assets/textures/waxball/core_normal_2k.png": {
+        "bytes": 160621,
+        "sha256": "a1a6845a3e4b713449f7857d380f31e55735e189ea54298be2c3f3c94cea2806"
+      },
+      "assets/textures/waxball/core_roughness_2k.png": {
+        "bytes": 500948,
+        "sha256": "81340f92f3f0933324d8546c7ebbfb3b0829931d753fbd6c9f2a2a21eaa3186d"
+      },
+      "assets/textures/waxball/core_thickness_2k.png": {
+        "bytes": 302645,
+        "sha256": "8f7634245d7d733173c513fb3480c5361e72056d3071ee94fd2d0cc88c1d013e"
+      },
+      "assets/models/glowball/glowball_ab.glb": {
+        "bytes": 13353864,
+        "sha256": "713c773febf57ab042b44c059a8c3c72decf4bc103bfea71667f0844b97feb3d"
+      },
+      "assets/models/glowball/glowball_ab_runtime.gltf": {
+        "bytes": 6816940,
+        "sha256": "db6cdd1106e15799b69e8ad5ed4cdfc9d2b6d57ee225a5f8537a10e5f387a80f"
+      },
+      "assets/models/glowball/glowball_ab_manifest.json": {
+        "bytes": 18792,
+        "sha256": "22ebe8280a0844b7130e1863ceeaddb6a322621bcdd8d75ea17359a0bffcbf4d"
+      },
+      "assets/models/glowball/glowball_ab_qa.json": {
+        "bytes": 8662,
+        "sha256": "ca4e59a71a8b43fb303a482014b8f96883438f102680171162a0f0de5faa604b"
+      },
+      "assets/textures/glowball/glow_shell_basecolor_2k.png": {
+        "bytes": 1348225,
+        "sha256": "ca7501dc95bb641a262e0e0dd3661ea308b51e5431762b3715ebd2ae2c3a9c26"
+      },
+      "assets/textures/glowball/glow_shell_normal_2k.png": {
+        "bytes": 2774982,
+        "sha256": "ac0bce8542bc6768adb70e9d3a5b2337df02d788fb721c26875133839a11b160"
+      },
+      "assets/textures/glowball/glow_shell_orm_2k.png": {
+        "bytes": 1044588,
+        "sha256": "658cb54e6cc792943d8d4810d951e28b76a5c833e9bc04bbf45b5c7b53dc9b24"
+      },
+      "assets/textures/glowball/glow_shell_emissive_mask_2k.png": {
+        "bytes": 952945,
+        "sha256": "c0e0f1bb3ab5a9667e891e8800acd88e8bec7bd623c46aed95eca79d375776f3"
+      },
+      "assets/textures/glowball/glow_core_basecolor_2k.png": {
+        "bytes": 1833860,
+        "sha256": "0e532c7d4be51c84bb7561e4e69f4c1d517e50108c04237ef8ec318a0c6cf301"
+      },
+      "assets/textures/glowball/glow_core_normal_2k.png": {
+        "bytes": 2151627,
+        "sha256": "7c24dbecde0aaadeea0c03a0db902bf34958c7b9d60dfe7340fc5f5154580dc3"
+      },
+      "assets/textures/glowball/glow_core_orm_2k.png": {
+        "bytes": 1090633,
+        "sha256": "793fb7a9eaea2f2551e5d7b14799a11f62e5ee6f00dbc22ba82dedc7d23e2f29"
+      },
+      "assets/textures/glowball/glow_core_emissive_mask_2k.png": {
+        "bytes": 914595,
+        "sha256": "9ba1ecf03390c267f726b1f70dd8665af32276c805355f1a93d5581ba76526de"
+      },
+      "assets/textures/glowball/glow_crack_atlas_2k.png": {
+        "bytes": 2358659,
+        "sha256": "319f228a0e5d6d74604c9174db92001f2097939c5e043e991f0bda2ee1cb6a1b"
+      },
+      "assets/renders/glowball_stage0_blender.png": {
+        "bytes": 1319382,
+        "sha256": "2de8e9c45c23962ce59383884fa2594cdd2d79a298941cfa4322c0af61cb5ac9"
+      },
+      "assets/renders/glowball_stage0_transparent.png": {
+        "bytes": 1284892,
+        "sha256": "6f5f8f4f9902433f9ad8e0918044c768d0392e50527eb2f5e73c95c9bc930215"
+      },
+      "assets/images/waxball-select-xeno-c.png": {
+        "bytes": 2416643,
+        "sha256": "aa77b9d53ec2a74d8ece366114a837c5d76031aa491a7f2d634abf26a108f53e"
+      },
+      "docs/concepts/alien-drake-hatchling-c.png": {
+        "bytes": 2360896,
+        "sha256": "73edbde4fbc99a2ed5216623e1d5de4557c2ed2e2a77467831fe03f3869dd0e4"
+      }
+    },
+    "unchanged": true,
+    "protectedFileCount": 29
+  },
+  "determinism": {
+    "seed": 977,
+    "semanticGeometrySha256": "3fb49d8c0d3f116cc197dc307c396a82ce6f268529b5ec51f372d88512c7e6c0",
+    "textureBake": "byte-stable across clean rebuilds",
+    "containerNote": "Blender glTF export may reorder equivalent vertex buffers, so GLB/glTF container hashes are recorded per build while the order-independent semantic geometry fingerprint is the reproducibility contract."
+  }
+}

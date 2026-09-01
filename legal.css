@@ -1,0 +1,87 @@
+:root {
+  color-scheme: light;
+  font-family: Pretendard, "Noto Sans KR", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #202849;
+  background: #eef1ff;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 12% 4%, rgba(111, 202, 255, .24), transparent 32rem),
+    radial-gradient(circle at 92% 18%, rgba(228, 157, 255, .28), transparent 34rem),
+    linear-gradient(155deg, #f7f9ff, #e9eafd 62%, #f5edff);
+}
+
+main {
+  width: min(880px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 48px 0 72px;
+}
+
+header, article {
+  border: 1px solid rgba(255, 255, 255, .86);
+  background: rgba(255, 255, 255, .72);
+  box-shadow: 0 24px 70px rgba(37, 45, 91, .12);
+  backdrop-filter: blur(18px);
+}
+
+header {
+  padding: clamp(28px, 6vw, 56px);
+  border-radius: 32px;
+  margin-bottom: 18px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 900;
+  letter-spacing: .1em;
+  color: #675ca8;
+}
+
+.orb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #79dbff, #c7a5ff 56%, #ffbce7);
+  box-shadow: inset 0 2px 5px #fff, 0 4px 14px rgba(111, 98, 211, .35);
+}
+
+h1 {
+  margin: 22px 0 10px;
+  font-size: clamp(2rem, 7vw, 3.8rem);
+  line-height: 1.08;
+  letter-spacing: -.045em;
+}
+
+.summary { margin: 0; color: #626b8d; line-height: 1.7; }
+.meta { margin-top: 18px; color: #777f9e; font-size: .9rem; }
+
+article { padding: clamp(24px, 5vw, 48px); border-radius: 28px; }
+section + section { margin-top: 34px; padding-top: 30px; border-top: 1px solid #dfe3f4; }
+h2 { margin: 0 0 12px; font-size: 1.2rem; letter-spacing: -.02em; }
+p, li { color: #4f5879; line-height: 1.82; }
+ul { margin: 8px 0 0; padding-left: 1.25rem; }
+a { color: #5f55a5; text-underline-offset: 3px; }
+
+nav { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 26px; }
+nav a {
+  display: inline-flex;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: #f0edff;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+footer { padding: 28px 8px 0; color: #737b9a; text-align: center; font-size: .86rem; }
+
+@media (max-width: 520px) {
+  main { width: min(100% - 20px, 880px); padding-top: 18px; }
+  header, article { border-radius: 22px; }
+}
