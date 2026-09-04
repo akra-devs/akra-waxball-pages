@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "appId": "waxball",
+  "revision": "bundled-1",
+  "documents": [
+    {
+      "type": "privacy",
+      "version": "1.1.0",
+      "effectiveAt": "2026-09-03T00:00:00Z",
+      "requiresReconsent": false,
+      "supersedes": "1.0.0",
+      "locales": {
+        "en": {
+          "path": "policies/privacy.en.md",
+          "url": "https://waxball.akra.kr/privacy/",
+          "sha256": "47feef1ee41aebc130599c108686bb3b54b3f37301a9243c65b5d06e3768a2a4"
+        },
+        "ko": {
+          "path": "policies/privacy.ko.md",
+          "url": "https://waxball.akra.kr/privacy/",
+          "sha256": "7aa916ce71ace5aa965506ed286ebae83cba5f2d8e2df54dddbf305d9c38eb00"
+        }
+      }
+    },
+    {
+      "type": "terms",
+      "version": "1.0.0",
+      "effectiveAt": "2026-07-31T00:00:00Z",
+      "requiresReconsent": false,
+      "supersedes": null,
+      "locales": {
+        "en": {
+          "path": "policies/terms.en.md",
+          "url": "https://waxball.akra.kr/terms/",
+          "sha256": "12bcf0d89b7ac9e5131a2688246fc62e1c19fa8dd9993eb45eb860d8bc05cc38"
+        },
+        "ko": {
+          "path": "policies/terms.ko.md",
+          "url": "https://waxball.akra.kr/terms/",
+          "sha256": "9bdb68f84cde052e3d980e6f1ae9e3da8e060bc3e9b5ae175258a1ad09ea4426"
+        }
+      }
+    },
+    {
+      "type": "support",
+      "version": "1.0.0",
+      "effectiveAt": "2026-07-31T00:00:00Z",
+      "requiresReconsent": false,
+      "supersedes": null,
+      "locales": {
+        "en": {
+          "path": "policies/support.en.md",
+          "url": "https://waxball.akra.kr/",
+          "sha256": "8ad2b111a1d7ea185d13cb27034da9280d3ffa8ba0d8655b200f11659d6958b7"
+        },
+        "ko": {
+          "path": "policies/support.ko.md",
+          "url": "https://waxball.akra.kr/",
+          "sha256": "cebdd9ebc18d903b31017cf3f999941ac13212d8a802e142fe8418f3cbd258cf"
+        }
+      }
+    }
+  ]
+}

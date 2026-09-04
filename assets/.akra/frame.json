@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 2,
+  "appId": "waxball",
+  "framework": "flutter",
+  "targets": {
+    "android": {
+      "role": "production",
+      "distribution": "google-play",
+      "mockCapabilities": []
+    },
+    "web": {
+      "role": "production",
+      "distribution": "web",
+      "mockCapabilities": []
+    }
+  },
+  "channel": "production",
+  "defaultLocale": "en",
+  "requiredLocales": [
+    "en",
+    "ko"
+  ],
+  "remote": {
+    "manifestUrl": "https://raw.githubusercontent.com/akra-devs/publish/main/control-plane/apps/waxball/channels/production/release.json",
+    "allowedHosts": [
+      "raw.githubusercontent.com"
+    ],
+    "connectTimeoutMs": 1500,
+    "readTimeoutMs": 3000,
+    "maxArtifactBytes": 524288,
+    "maxStaleSeconds": 604800,
+    "requireSignature": false,
+    "trustedKeyIds": []
+  },
+  "bundled": {
+    "runtimeConfig": "assets/akra/defaults/runtime-config.json",
+    "productCatalog": "assets/akra/defaults/product-catalog.json",
+    "policyManifest": "assets/akra/defaults/policy-manifest.json",
+    "locales": {
+      "en": "assets/akra/defaults/locales/en.json",
+      "ko": "assets/akra/defaults/locales/ko.json"
+    }
+  },
+  "cacheNamespace": "akra_frame_v2_waxball",
+  "observabilityProfile": ".akra/mobile-observability.json"
+}

@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "appId": "waxball",
+  "revision": "bundled-1",
+  "channel": "bundled",
+  "operations": {
+    "mode": "active",
+    "window": null,
+    "titleKey": "operations.active.title",
+    "bodyKey": "operations.active.body",
+    "readOnlyCapabilities": [],
+    "supportUrl": "https://github.com/akra-devs",
+    "versionPolicy": {
+      "minimum": {},
+      "recommended": {},
+      "storeUrls": {}
+    },
+    "notices": []
+  },
+  "features": {
+    "ads.enabled": true,
+    "ads.configuration_authority": "application",
+    "economy.policy_authority": "application",
+    "legal.presentation_authority": "application",
+    "content.remote_enabled": false
+  }
+}

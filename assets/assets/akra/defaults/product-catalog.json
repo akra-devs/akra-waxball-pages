@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "appId": "waxball",
+  "revision": "bundled-1",
+  "catalogRevision": "bundled-1",
+  "policyAuthority": {
+    "mode": "application",
+    "contract": "waxball-access-policy-v2"
+  },
+  "products": []
+}

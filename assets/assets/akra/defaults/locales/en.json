@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "appId": "waxball",
+  "locale": "en",
+  "revision": "bundled-1",
+  "messages": {
+    "common.ok": {
+      "message": "OK",
+      "placeholders": {}
+    },
+    "common.retry": {
+      "message": "Retry",
+      "placeholders": {}
+    },
+    "operations.active.body": {
+      "message": "The service is available.",
+      "placeholders": {}
+    },
+    "operations.active.title": {
+      "message": "Available",
+      "placeholders": {}
+    },
+    "operations.maintenance.body": {
+      "message": "We are performing scheduled maintenance. Please try again later.",
+      "placeholders": {}
+    },
+    "operations.maintenance.title": {
+      "message": "Under maintenance",
+      "placeholders": {}
+    },
+    "operations.paused.body": {
+      "message": "This service is temporarily paused. Please try again later.",
+      "placeholders": {}
+    },
+    "operations.paused.title": {
+      "message": "Temporarily unavailable",
+      "placeholders": {}
+    },
+    "operations.sunset.body": {
+      "message": "This service has ended. Visit support for available options.",
+      "placeholders": {}
+    },
+    "operations.sunset.title": {
+      "message": "Service ended",
+      "placeholders": {}
+    },
+    "operations.update.body": {
+      "message": "Update to version {version} or later to continue.",
+      "placeholders": {
+        "version": "string"
+      }
+    },
+    "operations.update.title": {
+      "message": "Update required",
+      "placeholders": {}
+    },
+    "policies.privacy.label": {
+      "message": "Privacy Policy",
+      "placeholders": {}
+    },
+    "policies.support.label": {
+      "message": "Support",
+      "placeholders": {}
+    },
+    "policies.terms.label": {
+      "message": "Terms of Use",
+      "placeholders": {}
+    },
+    "products.remove_ads.description": {
+      "message": "Remove non-rewarded advertising from this app.",
+      "placeholders": {}
+    },
+    "products.remove_ads.name": {
+      "message": "Remove ads",
+      "placeholders": {}
+    }
+  }
+}
