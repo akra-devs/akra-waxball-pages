@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 2,
+  "appId": "waxball",
+  "channel": "production",
+  "revision": "news-foundation-20260908",
+  "sequence": 1,
+  "previousRevision": null,
+  "publishedAt": "2026-09-07T16:58:20Z",
+  "notBefore": "2026-09-07T16:58:20Z",
+  "expiresAt": "2026-10-07T16:58:20Z",
+  "artifacts": {
+    "locales/en.json": {
+      "url": "https://waxball.akra.kr/control-plane/apps/waxball/releases/news-foundation-20260908/locales/en.json",
+      "sha256": "5874bd8ce17b8c3237ec0f751a791e75febaca9e2d7b8e0eb7d43c94dc2eab92",
+      "bytes": 2038,
+      "contentType": "application/json"
+    },
+    "locales/ko.json": {
+      "url": "https://waxball.akra.kr/control-plane/apps/waxball/releases/news-foundation-20260908/locales/ko.json",
+      "sha256": "cc9caaba3b4fe9da7a39292ce70fc267ac7802152ca34e36182860fbc07b9a26",
+      "bytes": 2209,
+      "contentType": "application/json"
+    },
+    "policies/privacy.en.md": {
+      "url": "https://waxball.akra.kr/control-plane/apps/waxball/releases/news-foundation-20260908/policies/privacy.en.md",
+      "sha256": "d13518d3cbb90e8f636e4d40b00d9cd4c49cbc3c7cdd415734a297e0fb5d9273",
+      "bytes": 3896,
+      "contentType": "text/markdown; charset=utf-8"
+    },
+    "policies/privacy.ko.md": {
+      "url": "https://waxball.akra.kr/control-plane/apps/waxball/releases/news-foundation-20260908/policies/privacy.ko.md",
+      "sha256": "937b837d750715af129c71f8923447c5c904fb1102ba5227f39b4169d7410dd4",
+      "bytes": 4432,
+      "contentType": "text/markdown; charset=utf-8"
+    },
+    "policies/support.en.md": {
+      "url": "https://waxball.akra.kr/control-plane/apps/waxball/releases/news-foundation-20260908/policies/support.en.md",
+      "sha256": "8ad2b111a1d7ea185d13cb27034da9280d3ffa8ba0d8655b200f11659d6958b7",
+      "bytes": 579,
+      "contentType": "text/markdown; charset=utf-8"
+    },
+    "policies/support.ko.md": {
+      "url": "https://waxball.akra.kr/control-plane/apps/waxball/releases/news-foundation-20260908/policies/support.ko.md",
+      "sha256": "cebdd9ebc18d903b31017cf3f999941ac13212d8a802e142fe8418f3cbd258cf",
+      "bytes": 624,
+      "contentType": "text/markdown; charset=utf-8"
+    },
+    "policies/terms.en.md": {
+      "url": "https://waxball.akra.kr/control-plane/apps/waxball/releases/news-foundation-20260908/policies/terms.en.md",
+      "sha256": "12bcf0d89b7ac9e5131a2688246fc62e1c19fa8dd9993eb45eb860d8bc05cc38",
+      "bytes": 803,
+      "contentType": "text/markdown; charset=utf-8"
+    },
+    "policies/terms.ko.md": {
+      "url": "https://waxball.akra.kr/control-plane/apps/waxball/releases/news-foundation-20260908/policies/terms.ko.md",
+      "sha256": "9bdb68f84cde052e3d980e6f1ae9e3da8e060bc3e9b5ae175258a1ad09ea4426",
+      "bytes": 913,
+      "contentType": "text/markdown; charset=utf-8"
+    },
+    "policy-manifest.json": {
+      "url": "https://waxball.akra.kr/control-plane/apps/waxball/releases/news-foundation-20260908/policy-manifest.json",
+      "sha256": "e52f21725538ecab9c26859f7766724eb02775f8d04e8f7fb16cfd507673ebb4",
+      "bytes": 2404,
+      "contentType": "application/json"
+    },
+    "product-catalog.json": {
+      "url": "https://waxball.akra.kr/control-plane/apps/waxball/releases/news-foundation-20260908/product-catalog.json",
+      "sha256": "8cc88d0a0944e03b36b56209496bb58d8a7cb5f9162bb9203bf66cc9ecc644fd",
+      "bytes": 239,
+      "contentType": "application/json"
+    },
+    "runtime-config.json": {
+      "url": "https://waxball.akra.kr/control-plane/apps/waxball/releases/news-foundation-20260908/runtime-config.json",
+      "sha256": "c406c3abfd72ac4bfe03239b5220397be1b32b2d684b9f633f380534b671a3da",
+      "bytes": 768,
+      "contentType": "application/json"
+    }
+  },
+  "signature": {
+    "algorithm": "Ed25519",
+    "canonicalization": "RFC8785",
+    "keyId": "waxball-pages-2026",
+    "value": "lgTOziausUFcHd9sl9xhPnPiYgZgJYcq9fZVXN8ZQfUK57OVOfzcmCRffs2azfmmUf44o0GiK_7GmI9FsgV1BQ"
+  }
+}

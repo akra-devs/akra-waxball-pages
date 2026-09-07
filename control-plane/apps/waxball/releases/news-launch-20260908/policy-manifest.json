@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "appId": "waxball",
+  "revision": "news-launch-20260908",
+  "documents": [
+    {
+      "type": "privacy",
+      "version": "1.3.0",
+      "effectiveAt": "2026-09-07T15:00:00Z",
+      "requiresReconsent": false,
+      "supersedes": "1.2.0",
+      "locales": {
+        "en": {
+          "path": "policies/privacy.en.md",
+          "url": "https://waxball.akra.kr/control-plane/apps/waxball/releases/news-launch-20260908/policies/privacy.en.md",
+          "sha256": "207f56a5a2fe75a331162402cd09714b389f29e0b34fdcb620f880950a28766a"
+        },
+        "ko": {
+          "path": "policies/privacy.ko.md",
+          "url": "https://waxball.akra.kr/control-plane/apps/waxball/releases/news-launch-20260908/policies/privacy.ko.md",
+          "sha256": "73249d288c19f8d1c71a18b0a993b3c015994e14364e881f705b9a3da879686d"
+        }
+      }
+    },
+    {
+      "type": "terms",
+      "version": "1.0.0",
+      "effectiveAt": "2026-07-31T00:00:00Z",
+      "requiresReconsent": false,
+      "supersedes": null,
+      "locales": {
+        "en": {
+          "path": "policies/terms.en.md",
+          "url": "https://waxball.akra.kr/control-plane/apps/waxball/releases/news-launch-20260908/policies/terms.en.md",
+          "sha256": "12bcf0d89b7ac9e5131a2688246fc62e1c19fa8dd9993eb45eb860d8bc05cc38"
+        },
+        "ko": {
+          "path": "policies/terms.ko.md",
+          "url": "https://waxball.akra.kr/control-plane/apps/waxball/releases/news-launch-20260908/policies/terms.ko.md",
+          "sha256": "9bdb68f84cde052e3d980e6f1ae9e3da8e060bc3e9b5ae175258a1ad09ea4426"
+        }
+      }
+    },
+    {
+      "type": "support",
+      "version": "1.0.0",
+      "effectiveAt": "2026-07-31T00:00:00Z",
+      "requiresReconsent": false,
+      "supersedes": null,
+      "locales": {
+        "en": {
+          "path": "policies/support.en.md",
+          "url": "https://waxball.akra.kr/control-plane/apps/waxball/releases/news-launch-20260908/policies/support.en.md",
+          "sha256": "8ad2b111a1d7ea185d13cb27034da9280d3ffa8ba0d8655b200f11659d6958b7"
+        },
+        "ko": {
+          "path": "policies/support.ko.md",
+          "url": "https://waxball.akra.kr/control-plane/apps/waxball/releases/news-launch-20260908/policies/support.ko.md",
+          "sha256": "cebdd9ebc18d903b31017cf3f999941ac13212d8a802e142fe8418f3cbd258cf"
+        }
+      }
+    }
+  ]
+}
