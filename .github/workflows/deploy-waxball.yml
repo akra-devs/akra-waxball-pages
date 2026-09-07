@@ -263,6 +263,14 @@ jobs:
 
           printf '%s\n' "$SOURCE_SHA" > site/.source-sha
 
+          # News has its own signed release lifecycle. Preserve the current
+          # public channel whenever an application website is redeployed.
+          if [ -d control-plane ]; then
+            python3 tools/verify_news.py control-plane
+            cp -a control-plane site/
+          fi
+          if [ -d policy-updates ]; then cp -a policy-updates/. site/; fi
+
       - name: Publish gh-pages branch
         if: steps.resolve.outputs.deploy == 'true'
         shell: bash
