@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "appId": "waxball",
+  "revision": "news-ready-20260908",
+  "channel": "production",
+  "operations": {
+    "mode": "active",
+    "window": null,
+    "titleKey": "operations.active.title",
+    "bodyKey": "operations.active.body",
+    "readOnlyCapabilities": [],
+    "supportUrl": "https://github.com/akra-devs",
+    "versionPolicy": {
+      "minimum": {},
+      "recommended": {},
+      "storeUrls": {},
+      "recommendedDisplayPolicy": "oncePerVersion"
+    },
+    "notices": [],
+    "migration": null
+  },
+  "features": {
+    "ads.enabled": true,
+    "ads.configuration_authority": "application",
+    "economy.policy_authority": "application",
+    "legal.presentation_authority": "application",
+    "content.remote_enabled": false
+  }
+}
