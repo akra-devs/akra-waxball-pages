@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "appId": "waxball",
+  "revision": "required-update-20260912",
+  "catalogRevision": "bundled-1",
+  "policyAuthority": {
+    "mode": "application",
+    "contract": "waxball-access-policy-v2"
+  },
+  "products": []
+}
