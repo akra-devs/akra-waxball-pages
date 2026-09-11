@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "appId": "waxball",
+  "revision": "new-balls-20260911",
+  "channel": "production",
+  "operations": {
+    "mode": "active",
+    "window": null,
+    "titleKey": "operations.active.title",
+    "bodyKey": "operations.active.body",
+    "readOnlyCapabilities": [],
+    "supportUrl": "https://github.com/akra-devs",
+    "versionPolicy": {
+      "minimum": {},
+      "recommended": {},
+      "storeUrls": {},
+      "recommendedDisplayPolicy": "oncePerVersion"
+    },
+    "notices": [
+      {
+        "id": "four-new-balls-20260911",
+        "revision": 1,
+        "kind": "notice",
+        "severity": "info",
+        "priority": 100,
+        "blocking": false,
+        "dismissible": true,
+        "placement": "inbox",
+        "displayPolicy": "always",
+        "startsAt": "2026-09-11T00:00:00Z",
+        "endsAt": "2026-10-10T23:59:59Z",
+        "titleKey": "news.balls.title",
+        "bodyKey": "news.balls.body",
+        "targets": {
+          "platforms": [
+            "android"
+          ],
+          "minimumVersion": "1.0.28"
+        }
+      }
+    ],
+    "migration": null
+  },
+  "features": {
+    "ads.enabled": true,
+    "ads.configuration_authority": "application",
+    "economy.policy_authority": "application",
+    "legal.presentation_authority": "application",
+    "content.remote_enabled": false
+  }
+}
