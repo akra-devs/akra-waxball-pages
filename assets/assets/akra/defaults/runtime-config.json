@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "appId": "waxball",
   "revision": "bundled-1",
-  "channel": "bundled",
+  "channel": "production",
   "operations": {
     "mode": "active",
     "window": null,
@@ -13,9 +13,11 @@
     "versionPolicy": {
       "minimum": {},
       "recommended": {},
-      "storeUrls": {}
+      "storeUrls": {},
+      "recommendedDisplayPolicy": "oncePerVersion"
     },
-    "notices": []
+    "notices": [],
+    "migration": null
   },
   "features": {
     "ads.enabled": true,

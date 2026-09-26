@@ -1,8 +1,8 @@
 # WAXBALL Privacy Policy
 
-Version: 1.1.0
+Version: 1.2.0
 
-Effective date: 2026-09-03
+Effective date: 2026-09-07
 
 Public policy: https://waxball.akra.kr/privacy/
 
@@ -18,6 +18,24 @@ choices for ad delivery, measurement, fraud prevention, and privacy controls.
 Google's processing and retention are governed by Google's policies and the
 user's consent choices. A privacy-options entry is shown in the app when UMP
 reports that it is required.
+
+The Android app uses Firebase Analytics to analyze ball selection, play starts
+and completions, rewards, limited 3D preparation, retries and simpler-graphics
+transitions, and ad readiness, eligibility and presentation results. Ad fields
+are limited to format, app placement, fixed stages and reasons, numeric error
+codes, cached-ad age buckets, and app version, build and production/test labels.
+3D diagnostics use fixed error codes, preparation stages, scene kinds, quality
+tiers and retry categories. The AdMob link can also provide ad impressions and
+revenue. The app does not add names, email addresses, account IDs, user input,
+raw touch coordinates, gem balances, raw exceptions, stack traces, ad response
+IDs, device hashes or raw referral URLs to Analytics fields. Copied diagnostic
+text is not transmitted either. The Firebase SDK itself may process app/device
+metadata and app-instance identifiers. Analytics Android advertising-ID
+collection and ad-personalization signals are disabled. Retention and deletion
+follow Firebase and Google Analytics policies.
+
+These Android advertising, Analytics and Crashlytics collection paths do not
+run in the web app.
 
 The Android app always uses Firebase Crashlytics to diagnose crashes, ANRs,
 unhandled Flutter and Dart errors, and selected startup failures. Crashlytics
@@ -35,3 +53,7 @@ before deletion begins.
 Users can remove locally stored WAXBALL data through the operating system's app
 data controls or by uninstalling the app. Uninstalling stops future collection
 but does not immediately shorten the retention period of reports already sent.
+
+## Optional news notifications and attendance
+
+If you enable news notifications, Firebase Cloud Messaging (FCM) processes a Firebase installation ID, a messaging registration token and delivery-related information to deliver WAXBALL news and service notices. The app subscribes to an app/channel/language topic. AKRA does not log registration tokens or send wallet balances or attendance receipts to FCM. You can turn notifications off in app settings or Android settings; opting out requests deletion of its FCM token and stops automatic registration, retrying cleanup on a later connection if offline. Received news is retained only for the current app process. Signed notices are downloaded over HTTPS from GitHub Pages; GitHub may process standard connection metadata under its privacy policy. Attendance dates and daily gem claims are stored only on your device and are lost if app data is cleared.

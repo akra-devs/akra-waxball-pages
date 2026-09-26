@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "keys": [
+    {
+      "keyId": "waxball-pages-2026",
+      "algorithm": "Ed25519",
+      "publicKey": "8UnRVQ4siBfIeXmofzCtoeEhZS9acGHufkb3olFmGZQ",
+      "status": "active",
+      "notBefore": "2026-09-07T00:00:00Z",
+      "notAfter": "2028-09-08T00:00:00Z"
+    }
+  ]
+}

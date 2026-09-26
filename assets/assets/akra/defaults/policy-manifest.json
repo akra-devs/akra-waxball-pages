@@ -5,20 +5,20 @@
   "documents": [
     {
       "type": "privacy",
-      "version": "1.1.0",
-      "effectiveAt": "2026-09-03T00:00:00Z",
+      "version": "1.3.0",
+      "effectiveAt": "2026-09-07T15:00:00Z",
       "requiresReconsent": false,
-      "supersedes": "1.0.0",
+      "supersedes": "1.2.0",
       "locales": {
         "en": {
           "path": "policies/privacy.en.md",
           "url": "https://waxball.akra.kr/privacy/",
-          "sha256": "47feef1ee41aebc130599c108686bb3b54b3f37301a9243c65b5d06e3768a2a4"
+          "sha256": "207f56a5a2fe75a331162402cd09714b389f29e0b34fdcb620f880950a28766a"
         },
         "ko": {
           "path": "policies/privacy.ko.md",
           "url": "https://waxball.akra.kr/privacy/",
-          "sha256": "7aa916ce71ace5aa965506ed286ebae83cba5f2d8e2df54dddbf305d9c38eb00"
+          "sha256": "73249d288c19f8d1c71a18b0a993b3c015994e14364e881f705b9a3da879686d"
         }
       }
     },

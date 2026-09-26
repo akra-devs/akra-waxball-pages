@@ -1,1 +1,5 @@
+OWNERDOMAIN=akra.kr
 google.com, pub-4496960310554471, DIRECT, f08c47fec0942fa0
+unity.com, 135108201, DIRECT, 96cabb5fbdde37a7
+ironsrc.com, 684615, DIRECT
+vungle.com, 6aac2dd78770bfafcf0d84ae, DIRECT, c107d686becd2d77
