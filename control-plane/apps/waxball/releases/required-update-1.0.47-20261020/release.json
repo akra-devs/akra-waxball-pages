@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 2,
+  "appId": "waxball",
+  "channel": "production",
+  "revision": "required-update-1.0.47-20261020",
+  "sequence": 9,
+  "previousRevision": "watermelon-sand-launch-20261020",
+  "publishedAt": "2026-10-20T05:07:49Z",
+  "notBefore": "2026-10-20T05:07:49Z",
+  "expiresAt": "2026-11-19T05:07:49Z",
+  "artifacts": {
+    "locales/en.json": {
+      "url": "https://waxball.akra.kr/control-plane/apps/waxball/releases/required-update-1.0.47-20261020/locales/en.json",
+      "sha256": "e3b2eca0678cb8e84125809272a7cc3f576e1dfc223e688f1c8390fe90c767fb",
+      "bytes": 4459,
+      "contentType": "application/json"
+    },
+    "locales/ko.json": {
+      "url": "https://waxball.akra.kr/control-plane/apps/waxball/releases/required-update-1.0.47-20261020/locales/ko.json",
+      "sha256": "df1409837c046067eb9802a1aef5c29502e75cea1734055ed150fe944c294cbf",
+      "bytes": 4870,
+      "contentType": "application/json"
+    },
+    "policies/privacy.en.md": {
+      "url": "https://waxball.akra.kr/control-plane/apps/waxball/releases/required-update-1.0.47-20261020/policies/privacy.en.md",
+      "sha256": "207f56a5a2fe75a331162402cd09714b389f29e0b34fdcb620f880950a28766a",
+      "bytes": 4092,
+      "contentType": "text/markdown; charset=utf-8"
+    },
+    "policies/privacy.ko.md": {
+      "url": "https://waxball.akra.kr/control-plane/apps/waxball/releases/required-update-1.0.47-20261020/policies/privacy.ko.md",
+      "sha256": "73249d288c19f8d1c71a18b0a993b3c015994e14364e881f705b9a3da879686d",
+      "bytes": 4670,
+      "contentType": "text/markdown; charset=utf-8"
+    },
+    "policies/support.en.md": {
+      "url": "https://waxball.akra.kr/control-plane/apps/waxball/releases/required-update-1.0.47-20261020/policies/support.en.md",
+      "sha256": "8ad2b111a1d7ea185d13cb27034da9280d3ffa8ba0d8655b200f11659d6958b7",
+      "bytes": 579,
+      "contentType": "text/markdown; charset=utf-8"
+    },
+    "policies/support.ko.md": {
+      "url": "https://waxball.akra.kr/control-plane/apps/waxball/releases/required-update-1.0.47-20261020/policies/support.ko.md",
+      "sha256": "cebdd9ebc18d903b31017cf3f999941ac13212d8a802e142fe8418f3cbd258cf",
+      "bytes": 624,
+      "contentType": "text/markdown; charset=utf-8"
+    },
+    "policies/terms.en.md": {
+      "url": "https://waxball.akra.kr/control-plane/apps/waxball/releases/required-update-1.0.47-20261020/policies/terms.en.md",
+      "sha256": "12bcf0d89b7ac9e5131a2688246fc62e1c19fa8dd9993eb45eb860d8bc05cc38",
+      "bytes": 803,
+      "contentType": "text/markdown; charset=utf-8"
+    },
+    "policies/terms.ko.md": {
+      "url": "https://waxball.akra.kr/control-plane/apps/waxball/releases/required-update-1.0.47-20261020/policies/terms.ko.md",
+      "sha256": "9bdb68f84cde052e3d980e6f1ae9e3da8e060bc3e9b5ae175258a1ad09ea4426",
+      "bytes": 913,
+      "contentType": "text/markdown; charset=utf-8"
+    },
+    "policy-manifest.json": {
+      "url": "https://waxball.akra.kr/control-plane/apps/waxball/releases/required-update-1.0.47-20261020/policy-manifest.json",
+      "sha256": "1322bd6d2f929b368fe4ac8d06aafc171df4da24a218d18761a50b9a4355d7f2",
+      "bytes": 2453,
+      "contentType": "application/json"
+    },
+    "product-catalog.json": {
+      "url": "https://waxball.akra.kr/control-plane/apps/waxball/releases/required-update-1.0.47-20261020/product-catalog.json",
+      "sha256": "6836d2c183e55fc1e21f86fbd0b020903051736eda2968f78726091ac362b626",
+      "bytes": 246,
+      "contentType": "application/json"
+    },
+    "runtime-config.json": {
+      "url": "https://waxball.akra.kr/control-plane/apps/waxball/releases/required-update-1.0.47-20261020/runtime-config.json",
+      "sha256": "171c0eccf06c37fb7c0c5eac89a25617f600cba5bee2d319edfe92d6d719053c",
+      "bytes": 3270,
+      "contentType": "application/json"
+    }
+  },
+  "signature": {
+    "algorithm": "Ed25519",
+    "canonicalization": "RFC8785",
+    "keyId": "waxball-pages-2026",
+    "value": "vYKfZNoDHqAh0amqopmfU1yndFJOuVZuytftg4VTtSmJvz8PeItKDOpDhphkF7YHeBD74UeGY_IGcMK-LKnvCQ"
+  }
+}
