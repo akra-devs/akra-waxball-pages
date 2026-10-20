@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 1,
+  "appId": "waxball",
+  "revision": "watermelon-sand-launch-20261020",
+  "channel": "production",
+  "operations": {
+    "mode": "active",
+    "window": null,
+    "titleKey": "operations.active.title",
+    "bodyKey": "operations.active.body",
+    "readOnlyCapabilities": [],
+    "supportUrl": "https://github.com/akra-devs",
+    "versionPolicy": {
+      "minimum": {
+        "android": "1.0.40"
+      },
+      "recommended": {},
+      "storeUrls": {
+        "android": "https://play.google.com/store/apps/details?id=kr.akra.waxball"
+      },
+      "recommendedDisplayPolicy": "oncePerVersion"
+    },
+    "notices": [
+      {
+        "id": "bubblelock-launch-20260929",
+        "revision": 1,
+        "kind": "notice",
+        "severity": "info",
+        "priority": 200,
+        "blocking": false,
+        "dismissible": true,
+        "placement": "inbox",
+        "displayPolicy": "always",
+        "startsAt": "2026-09-29T00:00:00Z",
+        "endsAt": "2026-10-29T00:00:00Z",
+        "titleKey": "news.bubblelock.title",
+        "bodyKey": "news.bubblelock.body",
+        "targets": {
+          "platforms": [
+            "android"
+          ],
+          "minimumVersion": "1.0.40"
+        }
+      },
+      {
+        "id": "four-new-balls-20260911",
+        "revision": 1,
+        "kind": "notice",
+        "severity": "info",
+        "priority": 100,
+        "blocking": false,
+        "dismissible": true,
+        "placement": "inbox",
+        "displayPolicy": "always",
+        "startsAt": "2026-09-11T00:00:00Z",
+        "endsAt": "2026-10-10T23:59:59Z",
+        "titleKey": "news.balls.title",
+        "bodyKey": "news.balls.body",
+        "targets": {
+          "platforms": [
+            "android"
+          ],
+          "minimumVersion": "1.0.28"
+        }
+      },
+      {
+        "id": "candle-honey-launch-20261014",
+        "revision": 1,
+        "kind": "notice",
+        "severity": "info",
+        "priority": 220,
+        "blocking": false,
+        "dismissible": true,
+        "placement": "dialog",
+        "displayPolicy": "untilDismissed",
+        "startsAt": "2026-10-14T00:00:00Z",
+        "endsAt": "2026-11-13T00:00:00Z",
+        "titleKey": "news.candlehoney.title",
+        "bodyKey": "news.candlehoney.body",
+        "targets": {
+          "platforms": [
+            "android"
+          ],
+          "minimumVersion": "1.0.45"
+        }
+      },
+      {
+        "id": "watermelon-sand-launch-20261020",
+        "revision": 1,
+        "kind": "notice",
+        "severity": "info",
+        "priority": 240,
+        "blocking": false,
+        "dismissible": true,
+        "placement": "dialog",
+        "displayPolicy": "untilDismissed",
+        "startsAt": "2026-10-20T00:00:00Z",
+        "endsAt": "2026-11-19T00:00:00Z",
+        "titleKey": "news.watermelonsand.title",
+        "bodyKey": "news.watermelonsand.body",
+        "targets": {
+          "platforms": [
+            "android"
+          ],
+          "minimumVersion": "1.0.46"
+        }
+      }
+    ],
+    "migration": null
+  },
+  "features": {
+    "ads.enabled": true,
+    "ads.configuration_authority": "application",
+    "economy.policy_authority": "application",
+    "legal.presentation_authority": "application",
+    "content.remote_enabled": false
+  }
+}
